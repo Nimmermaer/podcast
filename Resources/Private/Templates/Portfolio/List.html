@@ -1,0 +1,31 @@
+<f:layout name="Default"/>
+<f:section name="main">
+    <div id="portfoliowrap">
+        <h3>LATEST WORKS</h3>
+        <div class="portfolio-centered">
+            <div class="recentitems portfolio">
+                <f:for each="{portfolios}" as="portfolio">
+                    <f:for each="{portfolio.details.categories}" as="category" iteration="categoriesIterator">
+                        <f:if condition="{categoriesIterator.isFirst}">
+                            <div class="portfolio-item {category.title}">
+                        </f:if>
+                    </f:for>
+                        <div class="he-wrap tpl6">
+                           <f:image image="{portfolio.image}" />
+                            <div class="he-view">
+                                <div class="bg a0" data-animate="fadeIn">
+                                    <h3 class="a1" data-animate="fadeInDown">{portfolio.title}</h3>
+                                    <a data-rel="prettyPhoto" href="{f:uri.image(image:portfolio.image)}"
+                                       class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
+                                    <f:link.action pluginName="PortfolioDetail" extensionName="Podcast" action="show" controller="Portfolio" additionalAttributes="{data-animate:'fadeInUp'}" class="dmbutton a2" pageUid="{settings.detailpid}"  arguments="{portfolio :'{portfolio}'}">
+                                        <i class="fa fa-link"></i>
+                                    </f:link.action>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </f:for>
+            </div>
+        </div>
+    </div>
+</f:section>

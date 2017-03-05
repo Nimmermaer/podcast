@@ -1,0 +1,39 @@
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 centered">
+                <f:if condition="{portfolio.image}">
+                    <f:image image="{portfolio.image}" width="944" height="300c" class="img-responsive"/>
+                </f:if>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1">
+                <div class="spacing"></div>
+                <h4>{title}</h4>
+                {portfolio.description->f:format.html()}
+            </div>
+            <div class="col-lg-4 col-lg-offset-1">
+                <div class="spacing"></div>
+                <h4>Podcast Details</h4>
+               <div class="hline"></div>
+                <p><b>Download:</b>
+                   <f:media file="{portfolio.podcast}"/>
+                </p>
+                <p><b>Datum:</b> {portfolio.details.date->f:format.date(format:'%d %B %Y')}</p>
+                <p><b>Autor:</b> {portfolio.details.author}</p>
+                <p><b>Kategorien:</b>
+                    <f:for each="{portfolio.details.categories}" as="category" iteration="categoryIterator">
+                        <f:if condition="{categoryIterator.isLast}">
+                            <f:then>
+                                {category.title}
+                            </f:then>
+                            <f:else>
+                                {category.title},
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </p>
+            </div>
+        </div>
+    </div>
+</f:section>

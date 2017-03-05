@@ -1,0 +1,43 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Listing for ProjectDetail</h1>
+
+<f:flashMessages />
+
+<table  class="tx_podcast" >
+	<tr>
+		<th><f:translate key="tx_podcast_domain_model_projectdetail.date" /></th>
+		<th><f:translate key="tx_podcast_domain_model_projectdetail.author" /></th>
+		<th><f:translate key="tx_podcast_domain_model_projectdetail.categories" /></th>
+		<th><f:translate key="tx_podcast_domain_model_projectdetail.link" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{projectDetails}" as="projectDetail">
+		<tr>
+			<td><f:link.action action="show" arguments="{projectDetail : projectDetail}"> {projectDetail.date -> f:format.date()}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{projectDetail : projectDetail}"> {projectDetail.author}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{projectDetail : projectDetail}"> {projectDetail.categories}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{projectDetail : projectDetail}"> {projectDetail.link}</f:link.action></td>
+			<td><f:link.action action="edit" arguments="{projectDetail : projectDetail}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{projectDetail : projectDetail}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+<f:link.action action="new">New ProjectDetail</f:link.action>
+</f:section>

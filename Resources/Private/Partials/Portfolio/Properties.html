@@ -1,0 +1,37 @@
+
+<table class="tx-podcast" >
+	<tr>
+		<td>
+			<f:translate key="tx_podcast_domain_model_portfolio.title" />
+		</td>
+		<td>
+		{portfolio.title}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_podcast_domain_model_portfolio.description" />
+		</td>
+		<td>
+		{portfolio.description}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_podcast_domain_model_portfolio.podcast" />
+		</td>
+		<td>
+				<a href="{portfolio.podcast.originalResource.publicUrl}">
+					{portfolio.podcast.originalResource.name}
+				</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_podcast_domain_model_portfolio.image" />
+		</td>
+		<td>
+				<f:image src="{portfolio.image.originalResource.publicUrl}" width="200"/>
+		</td>
+	</tr>
+</table>

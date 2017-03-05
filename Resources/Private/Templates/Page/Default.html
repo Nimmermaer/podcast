@@ -1,0 +1,11 @@
+<!-- Fixed navbar -->
+<f:render partial="Page/Header" arguments="{_all}" />
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>{data.title}</h3>
+        </div><!-- /row -->
+    </div> <!-- /container -->
+</div>
+{columnMain->f:format.raw()}
+<f:render partial="Page/Footer" arguments="{_all}" />

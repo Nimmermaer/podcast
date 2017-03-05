@@ -1,0 +1,80 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div id="c{data.uid}">
+    <f:switch expression="{data.layout}">
+        <f:case value="2">
+            <div id="twrap" style="background: url({f:uri.image(image:files.0)}) top;">
+                <div class="container centered">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <f:if condition="{data.tx_podcast_icon}">
+                                <i class="fa {data.tx_podcast_icon} {data.tx_podcast_icon_movement}"></i>
+                            </f:if>
+                            {data.bodytext->f:format.html()}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:case>
+        <f:case value="3">
+            <f:if condition="{data.tx_podcast_icon}">
+                <i class="fa {data.tx_podcast_icon} {data.tx_podcast_icon_movement}"></i>
+            </f:if>
+            <f:if condition="{gallery.position.noWrap} != 1">
+                <f:render partial="Header" arguments="{_all}"/>
+            </f:if>
+            {data.bodytext->f:format.html()}
+            <br/>
+               <a href="#" class="btn btn-theme">Mehr Infos</a>
+       </f:case>
+        <f:case value="4">
+            <f:if condition="{gallery.position.noWrap} != 1">
+                <f:render partial="Header" arguments="{_all}"/>
+            </f:if>
+            <div class="hline-w"></div>
+            <p>
+                <f:for each="{Podcast_Textmedia}" as="social">
+                    <f:link.external uri="{social.link}"><i class="fa {social.icon}"></i></f:link.external>
+                </f:for>
+            </p>
+        </f:case>
+        <f:case value="5">
+            <div class="he-wrap tpl6">
+                <img src="{f:uri.image(image:files.0)}" alt="">
+                <div class="he-view">
+                    <div class="bg a0" data-animate="fadeIn">
+                        <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
+                        <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <h4>{data.title}</h4>
+            <f:format.html>{data.bodytext}</f:format.html>
+            <div class="hline"></div>
+        </f:case>
+        <f:case value="0">
+            <f:if condition="{gallery.position.noWrap} != 1">
+                <f:render partial="Header" arguments="{_all}"/>
+            </f:if>
+
+            <div class="ce-textpic ce-{gallery.position.horizontal} ce-{gallery.position.vertical}{f:if(condition: gallery.position.noWrap, then: ' ce-nowrap')}">
+                <f:if condition="{gallery.position.vertical} != 'below'">
+                    <f:render partial="MediaGallery" arguments="{_all}"/>
+                </f:if>
+
+                <div class="ce-bodytext">
+                    <f:if condition="{gallery.position.noWrap}">
+                        <f:render partial="Header" arguments="{_all}"/>
+                    </f:if>
+                    <f:format.html>{data.bodytext}</f:format.html>
+                </div>
+
+                <f:if condition="{gallery.position.vertical} == 'below'">
+                    <f:render partial="MediaGallery" arguments="{_all}"/>
+                </f:if>
+            </div>
+            <f:render partial="Footer" arguments="{_all}"/>
+        </f:case>
+    </f:switch>
+
+</div>
+</html>

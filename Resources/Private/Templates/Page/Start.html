@@ -1,0 +1,13 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="default"/>
+<f:section name="main">
+    <f:render partial="Page/Header" arguments="{_all}"/>
+    <div id="headerwrap">
+        <div class="container">
+            <div class="row">{columnSpecial->f:format.raw()}</div>
+        </div>
+    </div>
+    {columnMain->f:format.raw()}
+    <f:render partial="Page/Footer" arguments="{_all}"/>
+</f:section>
+</html>
