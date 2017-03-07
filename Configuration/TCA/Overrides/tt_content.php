@@ -110,3 +110,7 @@ $GLOBALS['TCA']['tt_content']['types'] ['podcast_portfolio'] = [
 ];
 $GLOBALS['TCA']['tt_content']['ctrl']['requestUpdate'] = 'layout';
 
+$GLOBALS['TCA']['tt_content']['columns']['image']['config']['max_size'] = 100000;
+$GLOBALS['TCA']['tt_content']['columns']['media']['config']['max_size'] = 100000;
+$GLOBALS['TCA']['tt_content']['columns']['multimedia']['config']['max_size'] = 100000;
+
