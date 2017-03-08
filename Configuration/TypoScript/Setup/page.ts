@@ -81,7 +81,7 @@ page {
 
         11 = TEXT
         11 {
-            value  = {$globals.browser-color}
+            value = {$globals.browser-color}
             wrap = <meta name="theme-color" content="|">
         }
 
@@ -100,21 +100,6 @@ page {
     }
 }
 
-[globalVar = GP:tx_news_pi1|news > 0]
-    page.headerData {
-        10 = RECORDS
-        10 {
-            source = {GP:tx_news_pi1|news}
-            source.insertData = 1
-            tables = tx_news_domain_model_news
-            conf.tx_news_domain_model_news >
-            conf.tx_news_domain_model_news = TEXT
-            conf.tx_news_domain_model_news.field = title
-            wrap = <title> |&nbsp; &#124; Aba-Angelshop Laufen </title>
-        }
-    }
-[end]
-
 [globalVar = TSFE:id = 1]
     page.headerData {
         10 = TEXT
@@ -124,3 +109,31 @@ page {
         }
     }
 [global]
+
+podcastRss = PAGE
+podcastRss {
+    typeNum = 1489004336
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders.10 {
+            header = Content-type:text/xml
+            replace = 0
+        }
+
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        xmlprologue = none
+        disableBodyTag = 1
+    }
+
+    10 = USER_INT
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        pluginName = RssFeed
+        extensionName = Podcast
+        vendorName = PodcastTeam
+        controller = Rss
+        action = list
+    }
+}

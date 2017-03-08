@@ -19,6 +19,16 @@ plugin.tx_podcast_related {
 		storagePid = {$plugin.tx_podcast_related.persistence.storagePid}
 	}
 }
+plugin.tx_podcast_rssfeed {
+	view {
+		templateRootPaths.0 = {$plugin.tx_podcast_related.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_podcast_related.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_podcast_related.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_podcast_related.persistence.storagePid}
+	}
+}
 
 plugin.tx_podcast_portfolio {
 	view {

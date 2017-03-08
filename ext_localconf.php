@@ -64,6 +64,20 @@ $boot = function ($extensionKey) {
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'PodcastTeam.' . $extensionKey,
+        'RssFeed',
+        array(
+            'Rss' => 'list',
+
+        ),
+        // non-cacheable actions
+        array(
+            'Rss' => 'list',
+
+        )
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'PodcastTeam.' . $extensionKey,
         'Sociallinks',
         array(
             'SocialLinks' => 'list',

@@ -10,8 +10,8 @@ $boot = function ($extensionKey) {
     );
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
         'PodcastTeam.' . $extensionKey,
-        'Podcast',
-        'Podcast'
+        'RssFeed',
+        'RssFeed'
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
