@@ -114,17 +114,18 @@ podcastRss = PAGE
 podcastRss {
     typeNum = 1489004336
     config {
-        disableAllHeaderCode = 1
         additionalHeaders.10 {
-            header = Content-type:text/xml
+            header = Content-Type:application/rss+xml;charset=utf-8
             replace = 0
         }
 
-        xhtml_cleaning = 0
+        additionalHeaders = Content-Type:application/rss+xml;charset=utf-8
+        disableAllHeaderCode = 1
+        xhtml_cleaning = none
         admPanel = 0
-        debug = 0
-        xmlprologue = none
-        disableBodyTag = 1
+        debug = 1
+        disablePrefixComment = 1
+        metaCharset = utf-8
     }
 
     10 = USER_INT

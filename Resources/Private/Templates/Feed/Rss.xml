@@ -35,15 +35,31 @@
                     <link>
 
                     </link>
-                    <description>{podcast.description -> f:format.stripTags() -> f:format.htmlspecialchars()}</description>
+                    <description>
+                        <f:format.cdata>
+                            <img src="{f:uri.image(src:podcast.image.uid,treatIdAsReference:1,width:200, absolute:1)}"/>
+                        </f:format.cdata>
+                        {podcast.description -> f:format.stripTags() -> f:format.htmlspecialchars()}
+                    </description>
+                    <image>
+                        <url>
+                            <f:uri.image src="{podcast.image.uid}" treatIdAsReference="1" width="400" absolute="1"/>
+                        </url>
+                        <title>W3Schools.com</title>
+                        <link>https://www.w3schools.com</link>
+                    </image>
                     <f:if condition="{podcast.image}">
                         <enclosure
                                 url="{f:uri.image(image:'{podcast.image}',absolute:1) -> f:format.htmlentities()}"
                                 length="{podcast.image.originalResource.size}"
                                 type="{podcast.image.originalResource.mimeType}"/>
+
                     </f:if>
                     <content:encoded>
                         <f:format.cdata>
+                            <f:if condition="{podcast.image}">
+                                <f:image image="{podcast.image}" width="400"/>
+                            </f:if>
                             <f:format.html>{podcast.description}</f:format.html>
                         </f:format.cdata>
                     </content:encoded>
